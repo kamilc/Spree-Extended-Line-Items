@@ -1,0 +1,17 @@
+<%= f.field_container :step do %>
+  <%= f.label :step, t(:step) %> <span class="required">*</span><br />
+  <%= f.text_field :step, :value => @product.step %>
+  <%= f.error_message_on :step %>
+<% end %>
+
+<%= f.field_container :round do %>
+  <%= f.label :round, t(:round) %> <span class="required">*</span><br />
+  <%= f.text_field :round, :value => @product.round %>
+  <%= f.error_message_on :round %>
+<% end %>
+
+<%= f.field_container :unit do %>
+  <%= f.label :unit, t(:unit) %> <span class="required">*</span><br />
+  <%= f.select :unit, Product.units, {:include_blank => true} %>
+  <%= f.error_message_on :unit %>
+<% end %>

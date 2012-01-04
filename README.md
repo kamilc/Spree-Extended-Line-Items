@@ -1,7 +1,10 @@
 SpreeExtendedLineItem
 =====================
 
-Introduction goes here.
+This extension gives you ability to mark products as being
+sold by volume ( ex. 1.35 kilos of potatos ).
+
+This means 
 
 
 Example
