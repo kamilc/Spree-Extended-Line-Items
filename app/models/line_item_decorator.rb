@@ -1,12 +1,21 @@
 LineItem.class_eval do
-  validates :quantity, :numericality => true
+
+  # validates :quantity, :numericality => true
 
   after_validation do
     # check if there is a problem with quantity field
-    if self.errors.messages.has_key?(:quantity) and self.errors.messages[:quantity].include?(I18n.t("validation.must_be_int"))
-      self.errors.messages[:quantity].delete(I18n.t("validation.must_be_int"))
+    # TODO: Polepszyć to
+    self.errors.messages.delete(:quantity)
+  end
+
+  before_validation do
+    _validate_callbacks.reject! do |f| 
+      f.raw_filter.class == ActiveModel::Validations::NumericalityValidator 
     end
-    puts self.errors.to_s
+  end
+
+  def valid?(context = false)
+    errors.empty?
   end
 
   # round quantity to 
